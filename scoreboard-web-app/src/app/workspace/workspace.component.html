@@ -1,0 +1,61 @@
+<div class="header">
+    <span (click)="changeFocused(-1)">DRINKI DARTS</span>
+    <img class="bar-logo"
+         src="../../assets/images/bar-logo.png"
+         alt="">
+    <span (click)="changeFocused(1)">GOSTJE</span>
+</div>
+<div class="main-content">
+    <div class="block left">
+        <div class="block-value"><i>Seti</i><span class="number-font"
+                  [class.focused]="editMode && editOptions[focusedOption]==EditOption.HomeSet"
+                  [class.selected]="editMode && selectedEditOption==EditOption.HomeSet"
+                  [class.changed]="!editMode && game.home.changed==ChangeType.Set">{{game.home.set}}</span>
+        </div>
+        <div class="leg-result number-font"
+             (click)="incrementLeg(game.home)"><i>Točke</i><span
+                  [class.focused]="editMode && editOptions[focusedOption]==EditOption.HomeLeg"
+                  [class.selected]="editMode && selectedEditOption==EditOption.HomeLeg"
+                  [class.changed]="!editMode && game.home.changed==ChangeType.Leg">{{game.home.leg}}</span></div>
+    </div>
+    <div class="block right">
+        <div class="block-value"><i>Seti</i><span class="number-font"
+                  [class.focused]="editMode && editOptions[focusedOption]==EditOption.GuestSet"
+                  [class.selected]="editMode && selectedEditOption==EditOption.GuestSet"
+                  [class.changed]="!editMode && game.guest.changed==ChangeType.Set">{{game.guest.set}}</span>
+        </div>
+        <div class="leg-result number-font"
+             (click)="incrementLeg(game.guest)"><i>Točke</i><span
+                  [class.focused]="editMode && editOptions[focusedOption]==EditOption.GuestLeg"
+                  [class.selected]="editMode && selectedEditOption==EditOption.GuestLeg"
+                  [class.changed]="!editMode && game.guest.changed==ChangeType.Leg">{{game.guest.leg}}</span></div>
+    </div>
+    <div class="total-pill">
+        <div class="total-value number-font"><span
+                  [class.focused]="editMode && editOptions[focusedOption]==EditOption.HomeTotal"
+                  [class.selected]="editMode && selectedEditOption==EditOption.HomeTotal">{{game.home.total}}</span>
+        </div>
+        <div class="total-value number-font"><span
+                  [class.focused]="editMode && editOptions[focusedOption]==EditOption.GuestTotal"
+                  [class.selected]="editMode && selectedEditOption==EditOption.GuestTotal">{{game.guest.total}}</span>
+        </div>
+    </div>
+    <div class="total-legs">Skupaj točke</div>
+    <div class="logo"
+         (click)="buttonPressed()">
+        <img src="../../assets/images/club-logo.png"
+             alt="">
+    </div>
+    <div class="return"
+         *ngIf="editMode"
+         [class.focused]="editMode && editOptions[focusedOption]==EditOption.Return"
+         (click)="returnToGame()">
+        Return
+    </div>
+    <div class="reset-game"
+         *ngIf="editMode"
+         [class.focused]="editMode && editOptions[focusedOption]==EditOption.Reset"
+         (click)="resetGame()">
+        Reset
+    </div>
+</div>
